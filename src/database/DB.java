@@ -26,14 +26,12 @@ public class DB {
 			conn = DriverManager.getConnection(url, props);
 			}
 			catch(SQLException e) {
-				throw new DbException(e.getMessage());
-				
+				throw new DbException(e.getMessage());	
 			}
 		}
-			
 		return conn;
 	}
-	
+	//Método estático para fechar o Statement
 	public static void closeStatement(Statement st){
 		if (st != null){
 			try {
@@ -45,6 +43,7 @@ public class DB {
 		}
 	}
 	
+	//Método Estático para fechar o ResultSet
 	public static void closeResultSet(ResultSet rt){
 		if (rt != null){
 			try {
@@ -63,11 +62,8 @@ public class DB {
 			catch(SQLException e) {
 				throw new DbException(e.getMessage());
 			}
-		}
-		
+		}	
 	}
-	
-	
 	
 	//Método Estático para definir onde está a propriedade dos arquivos que serão lidos pelo banco,
 	//com tratamento de exceções para evitar possíveis erros
@@ -78,8 +74,7 @@ public class DB {
 			return props;
 		}
 		catch(IOException e) {
-			throw new DbException(e.getMessage());
-			
+			throw new DbException(e.getMessage());	
 		}
 	}
 }
