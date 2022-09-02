@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import database.DB;
+import database.DbIntegrityException;
 
 
 public class Principal {
@@ -34,7 +35,7 @@ public class Principal {
 			
 			}
 			catch(SQLException e){
-				e.printStackTrace();
+				throw new DbIntegrityException(e.getMessage()); //Exceção para caso seja deletado uma linha que contenha uma FK
 				
 			}
 		finally {
