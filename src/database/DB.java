@@ -4,13 +4,16 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
 
 public class DB {
 
 	//Método Estático para Iniciar a Conexão com o Banco de dados, iniciada em nulo.  
 	private static Connection conn = null;
+	
 	
 	//Continuação do Método com o bloco que fará a conexão com o banco através
 	//das informações que foram passadas nas propriedades
@@ -31,6 +34,27 @@ public class DB {
 		return conn;
 	}
 	
+	public static void closeStatement(Statement st){
+		if (st != null){
+			try {
+				st.close();
+			}
+			catch(SQLException e) {
+				throw new DbException(e.getMessage());
+			}
+		}
+	}
+	
+	public static void closeResultSet(ResultSet rt){
+		if (rt != null){
+			try {
+				rt.close();
+			}
+			catch(SQLException e) {
+				throw new DbException(e.getMessage());
+			}
+		}
+	}
 	public static void closeConnection() {
 		if (conn != null) {
 			try {
