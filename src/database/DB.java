@@ -54,6 +54,7 @@ public class DB {
 			}
 		}
 	}
+	//Método Estático para fechar a conexão
 	public static void closeConnection() {
 		if (conn != null) {
 			try {

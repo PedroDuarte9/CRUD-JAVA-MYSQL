@@ -21,14 +21,12 @@ public class Principal {
 			conn = DB.getConnection();
 			
 			st = conn.prepareStatement(
-					"UPDATE evento_comanda"
-				+ " SET TP_PERSON = ? "
+				"DELETE FROM evento_comanda "
 				+ "WHERE"
 				+ "(ID = ?)"
 				);
 			
-			st.setString(1, "SÓCIO PROPRIETÁRIO");
-			st.setInt(2, 3);
+			st.setInt(1, 3);
 			
 			int linhasAfetadas = st.executeUpdate();
 			
